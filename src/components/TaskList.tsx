@@ -32,6 +32,12 @@ export function TaskList() {
 
   function handleToggleTaskCompletion(id: number) {
     // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
+    const checkedTask = tasks.map(task => task.id === id ? { // mapeando o array de tasks
+      ...task, //utiliza-se condição ternária ? => caso task.id == id // : => caso for diferente
+      isComplete: !task.isComplete //está pegando a task e sobrescrevendo seu estado, no caso marca a opção como completa
+    } : task ); // neste caso se for diferente só retorna a task do jeito que ela estava
+
+    setTasks(checkedTask); // marca na tela a task checkada
   }
 
   function handleRemoveTask(id: number) {
